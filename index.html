@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BİL KAZAN </title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Başlangıç Modalı -->
+  <div id="start-modal" class="modal-overlay">
+    <div class="modal-card">
+      <h1 class="logo-text">BİL KAZAN</h1>
+      <p class="subtitle">12 Soru, 4 Joker, 1.000.000 Puan!</p>
+      <input type="text" id="player-name-input" placeholder="Yarışmacı Adı Girin..." maxlength="20">
+      <div class="btn-group">
+        <button id="start-btn" class="action-btn primary">Yarışmaya Başla</button>
+        <button id="view-leaderboard-btn" class="action-btn secondary">🏆 Liderlik Tablosu (Top 10)</button>
+      </div>
+     <div class="panel-credit">
+  <span>code by</span> <strong>@HtSarac</strong>
+</div>
+    </div>
+  </div>
+
+  <!-- Oyun Alanı -->
+  <div class="game-container" id="game-container">
+    
+    <!-- Sol/Merkez: Soru ve Şıklar -->
+    <main class="quiz-panel">
+      <header class="quiz-header">
+        <div class="timer-box">
+          <span id="timer-text">30</span>
+          <div class="timer-bar-bg"><div id="timer-bar"></div></div>
+        </div>
+
+        <!-- Jokerler -->
+        <div class="jokers">
+          <button class="joker-btn" id="joker-fifty" title="Yarı Yarıya">%50</button>
+          <button class="joker-btn" id="joker-audience" title="Seyirciye Sor">👥</button>
+          <button class="joker-btn" id="joker-double" title="Çift Cevap">2x</button>
+          <button class="joker-btn" id="joker-pass" title="Soruyu Değiştir">🔄</button>
+        </div>
+
+        <button id="walkaway-btn" class="walkaway-btn">💰 Çekil</button>
+      </header>
+
+      <div class="question-box">
+        <span class="category-tag" id="question-category">Kategori</span>
+        <h2 id="question-text">Soru buraya gelecek...</h2>
+      </div>
+
+      <div class="options-grid">
+        <button class="option-btn" data-index="0"><span class="opt-label">A:</span> <span class="opt-text"></span></button>
+        <button class="option-btn" data-index="1"><span class="opt-label">B:</span> <span class="opt-text"></span></button>
+        <button class="option-btn" data-index="2"><span class="opt-label">C:</span> <span class="opt-text"></span></button>
+        <button class="option-btn" data-index="3"><span class="opt-label">D:</span> <span class="opt-text"></span></button>
+      </div>
+    </main>
+
+    <!-- Sağ: Para Ağacı / Basamaklar -->
+    <aside class="ladder-panel">
+      <h3>ÖDÜL PİRAMİDİ</h3>
+      <ul id="money-ladder">
+        <!-- JS ile 12'den 1'e dinamik basılacak -->
+      </ul>
+    </aside>
+  </div>
+
+  <!-- Sabit Alt Bilgi / Footer -->
+  <footer class="game-footer">
+   
+  </footer>
+<div class="credit-subtle">
+  <span></span> <strong>@HtSarac</strong>
+</div>
+  <!-- Seyirci Jokeri Modalı -->
+  <div id="audience-modal" class="modal-overlay hidden">
+    <div class="modal-card mini">
+      <h3>👥 Seyirci Oylaması</h3>
+      <div class="audience-bars" id="audience-bars"></div>
+      <button class="action-btn primary" id="close-audience-btn">Tamam</button>
+    </div>
+  </div>
+
+  <!-- Sonuç Modalı -->
+  <div id="result-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h2 id="result-title">Oyun Bitti!</h2>
+      <p id="result-message">Kazanılan Puan:</p>
+      <div class="final-score" id="final-score-display">0 P</div>
+      <button class="action-btn primary" id="restart-btn">Tekrar Oyna</button>
+      <button class="action-btn secondary" id="modal-leaderboard-btn">Liderlik Tablosu</button>
+      <div class="developer-tag">Geliştirici: <span>@HtSarac</span></div>
+    </div>
+  </div>
+
+  <!-- Liderlik Tablosu Modalı -->
+  <div id="leaderboard-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h2>🏆 EN İYİ 10 YARIŞMACI</h2>
+      <div class="table-container">
+        <table id="leaderboard-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>İsim</th>
+              <th>Puan</th>
+              <th>Tarih</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="action-btn primary" id="close-leaderboard-btn">Kapat</button>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
